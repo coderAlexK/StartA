@@ -1,6 +1,7 @@
 package com.akozlov.starta
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.snapping.SnapPosition
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.BottomCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,9 +42,24 @@ fun HomeScreenTwo () {
             Spacer(modifier = Modifier.weight(1f))
             Text(text = "Age", fontSize = 24.sp)
         }
-        Box() {
-            Text(text = "N", fontSize = 48.sp)
-            Text(text = "ame", fontSize = 16.sp)
+
+        Row() {
+            Box() {
+                Text(text = "N", fontSize = 48.sp)
+                Text(text = "ame", fontSize = 16.sp,
+                    modifier = Modifier.align(BottomCenter))
+
+        }
+            Spacer(modifier = Modifier.width(8.dp))
+            Column(){
+                Text(text = "Title", fontSize = 20.sp)
+                Text(text = "Description")
+            }
+
+        }
+        Column() {
+//            ShowList(listOf())
+            ShowList(listOf("asd", "dfd", "kjkj"))
 
         }
     }
@@ -54,4 +71,20 @@ fun HomeScreenTwo () {
 @Composable
 fun ShowHomeScreenTwo () {
     HomeScreenTwo()
+}
+
+@Composable
+fun ShowList(list: List<String>) {
+    if (list.isEmpty()) {
+        Box(contentAlignment = BottomCenter, modifier = Modifier.fillMaxSize()) {
+        Text(text = "Empty Screen", fontSize = 24.sp)
+     }
+    } else {
+        Column {
+        list.forEach {
+            Text(text = it, fontSize = 24.sp)
+
+        }
+        }
+    }
 }
