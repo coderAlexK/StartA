@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.akozlov.starta.ui.theme.StartATheme
@@ -16,16 +18,18 @@ import com.akozlov.starta.ui.theme.StartATheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        val counter = mutableIntStateOf(0)
         setContent {
-            StartATheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(modifier = Modifier.padding(innerPadding))
+//            StartATheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    HomeScreen(modifier = Modifier.padding(innerPadding))
+                    TextClickerScreen(counter = counter, onCounterClick = {counter.value++})
                 }
             }
+
         }
-    }
-}
+
+
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
