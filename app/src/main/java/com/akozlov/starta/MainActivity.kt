@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
 //                    TextClickerScreen(counter = counter, onCounterClick = { counter.value++ })
                     CheckBoxScreen(checked = checked
                         , onCheckedChange = {newCheckedValue -> checked.value = newCheckedValue}
-                        , onTextClick = {checked.value = checked.value xor true})
+                        , onTextClick = {checked.value = !checked.value})
                   }
                 }
             }
