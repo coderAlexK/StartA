@@ -1,5 +1,6 @@
 package com.akozlov.starta
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Checkbox
@@ -14,11 +15,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CheckBoxScreen(checked: State<Boolean>, onCheckedChange: (Boolean) -> Unit) {
+fun CheckBoxScreen(checked: State<Boolean>, onCheckedChange: (Boolean) -> Unit, onTextClick: () -> Unit) {
     val checkedValue =checked.value
+    fun onc() = onCheckedChange
     Row (verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 40.dp)){
         Checkbox(checked = checkedValue, onCheckedChange = onCheckedChange)
-        Text(text = "Some checkbox text", fontSize = 28.sp)
+        Text(text = "Some checkbox text", fontSize = 28.sp, modifier = Modifier.clickable(onClick =  onTextClick))
 
 }
 }

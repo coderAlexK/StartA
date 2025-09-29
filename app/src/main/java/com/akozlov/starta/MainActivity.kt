@@ -20,15 +20,17 @@ import com.akozlov.starta.ui.theme.StartATheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val counter = mutableIntStateOf(0)
-        val checked = mutableStateOf(true)
+//        val counter = mutableIntStateOf(0)
+        var checked = mutableStateOf(true)
         setContent {
             Column {
 //            StartATheme {
 //                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    HomeScreen(modifier = Modifier.padding(innerPadding))
-                    TextClickerScreen(counter = counter, onCounterClick = { counter.value++ })
-                    CheckBoxScreen(checked = checked, onCheckedChange = {newCheckedValue -> checked.value = newCheckedValue})
+//                    TextClickerScreen(counter = counter, onCounterClick = { counter.value++ })
+                    CheckBoxScreen(checked = checked
+                        , onCheckedChange = {newCheckedValue -> checked.value = newCheckedValue}
+                        , onTextClick = {checked.value = checked.value xor true})
                   }
                 }
             }
