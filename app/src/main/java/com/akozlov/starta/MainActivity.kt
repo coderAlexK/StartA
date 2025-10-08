@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 //        val counter = mutableIntStateOf(0)
         var checked = mutableStateOf(true)
+        val text = mutableStateOf("some text")
         setContent {
             Column {
 //            StartATheme {
@@ -31,6 +32,8 @@ class MainActivity : ComponentActivity() {
                     CheckBoxScreen(checked = checked
                         , onCheckedChange = {newCheckedValue -> checked.value = newCheckedValue}
                         , onTextClick = {checked.value = !checked.value})
+
+                    showTextField(text = text, onValueChange = {newText -> text.value = newText})
                   }
                 }
             }
